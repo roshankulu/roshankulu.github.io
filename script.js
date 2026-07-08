@@ -17,7 +17,7 @@
   let arrivedLate = false;
 
   const GREETING_ON_TIME = "Zaye Doh Chui Mubarak";
-  const GREETING_LATE = "Cxe chui aaddti late yun. Zaye Doh Chui Mubarak💗";
+  const GREETING_LATE = " Cxe Chui Addati Late Yun.";
 
   function showCountdownArrived(){
     if(countdownArrivedTriggered) return;
