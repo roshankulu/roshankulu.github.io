@@ -101,6 +101,21 @@
   // ============================================================
   const KNOWN_SINCE_DATE = new Date("2012-06-23T00:00:00");
 
+  function completedYearsSince(startDate, endDate){
+    let years = endDate.getFullYear() - startDate.getFullYear();
+    const anniversaryThisYear = new Date(
+      endDate.getFullYear(),
+      startDate.getMonth(),
+      startDate.getDate(),
+      startDate.getHours(),
+      startDate.getMinutes(),
+      startDate.getSeconds(),
+      startDate.getMilliseconds()
+    );
+    if(endDate < anniversaryThisYear) years--;
+    return Math.max(0, years);
+  }
+
   function updateCountUp(){
     const now = new Date();
     const diff = now - KNOWN_SINCE_DATE;
@@ -109,11 +124,14 @@
     const h = Math.floor((diff / 3600000) % 24);
     const m = Math.floor((diff / 60000) % 60);
     const s = Math.floor((diff / 1000) % 60);
+    const years = completedYearsSince(KNOWN_SINCE_DATE, now);
     const pad = n => String(n).padStart(2,'0');
+    const countHeadline = document.querySelector('.count-headline');
     const ctDays = document.getElementById('ct-days');
     const ctHours = document.getElementById('ct-hours');
     const ctMins = document.getElementById('ct-mins');
     const ctSecs = document.getElementById('ct-secs');
+    if(countHeadline) countHeadline.textContent = `${years} ${years === 1 ? 'Year' : 'Years'}`;
     if(ctDays) ctDays.textContent = d.toLocaleString();
     if(ctHours) ctHours.textContent = pad(h);
     if(ctMins) ctMins.textContent = pad(m);
