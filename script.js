@@ -7,9 +7,9 @@
   }
 
   // ============================================================
-  // COUNTDOWN — edit TARGET_DATE. This now runs on the very first
-  // page. Once it hits zero, the ticking clock hides and the
-  // "Lali" + greeting + Begin button fade in — only triggered once.
+  // OPENING — the birthday date has passed, so this countdown now
+  // resolves immediately into a belated note instead of leaving
+  // expired birthday timing/copy on screen.
   // ============================================================
   const TARGET_DATE = new Date("2026-07-08T00:00:00");
   let countdownArrivedTriggered = false;
@@ -17,7 +17,7 @@
   let arrivedLate = false;
 
   const GREETING_ON_TIME = "Zaye Doh Chui Mubarak";
-  const GREETING_LATE = " Cxe Chui Addati Late Yun.";
+  const GREETING_LATE = "Cxe chui aadti late yun.";
 
   function showCountdownArrived(){
     if(countdownArrivedTriggered) return;
